@@ -1,0 +1,66 @@
+@use "../colors" as c;
+
+// Fondo principal
+.home-container {
+  background-color: c.$color3_oscuro;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Encabezado
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 800px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+// Sección de Clima
+.weather-info {
+  text-align: left;
+  max-width: 800px;
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+  }
+}
+
+// Pronóstico Semanal
+.weekly-forecast {
+  background-color: c.$color1;
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 90%;
+  .day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    span {
+      font-size: 18px;
+    }
+    input[type="range"] {
+      flex-grow: 1;
+      margin: 0 10px;
+    }
+  }
+}
+
+// Mapa del Clima
+.weather-map {
+  width: 90%;
+  max-width: 800px;
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+}

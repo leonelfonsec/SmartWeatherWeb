@@ -61,7 +61,6 @@ body, html {
   border-radius: 25px;
 
   &:hover {
-    background-color: darken(c.$color5_claro, 10%);
     color: c.$color1_oscuro;
   }
 }
