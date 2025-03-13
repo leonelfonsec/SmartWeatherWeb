@@ -5,7 +5,7 @@ import { IniciarsesionComponent } from './iniciarsesion/iniciarsesion.component'
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, IniciarsesionComponent],
+  imports: [CommonModule, IniciarsesionComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

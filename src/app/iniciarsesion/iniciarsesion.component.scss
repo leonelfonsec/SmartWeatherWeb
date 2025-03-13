@@ -1,7 +1,103 @@
-body {
-    background-color: #1a1a2e;
+@use "../colors" as c;
+
+// Fondo de toda la pantalla
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: c.$color3_oscuro;
+}
+
+// Estilo para el contenedor principal
+.full-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: c.$color3_oscuro;
+}
+
+// Hacer la tarjeta completamente transparente
+.card {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 2rem;
+}
+
+// Estilos para los inputs
+.form-control {
+  background-color: c.$color3;
+  color: white;
+  border: 1px solid c.$color3;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+
+  &:focus {
+    background-color: c.$color3;
+    border-color: white;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
   }
-  .card {
-    border-radius: 10px;
+
+  // Color del placeholder
+  &::placeholder {
+    color: c.$color5_claro;
+    opacity: 1;
   }
-  
+}
+
+// Botón de "Iniciar sesión"
+.btn-light {
+  background-color: c.$color5_claro;
+  color: c.$color1_oscuro;
+  border: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 12px;
+  margin: 30px auto 10px auto; 
+  border-radius: 25px;
+
+  &:hover {
+    background-color: darken(c.$color5_claro, 10%);
+    color: c.$color1_oscuro;
+  }
+}
+
+// Botón de "Registrarse" más pequeño y centrado
+.btn-register {
+  background-color: c.$color5_claro;
+  color: c.$color1_oscuro;
+  font-weight: 500;
+  width: 60%;
+  display: block;
+  margin: 30px auto 0 auto; 
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+// Enlace de "¿Olvidaste tu contraseña?"
+.forgot-password {
+  background-color: c.$color3;
+  color: c.$color4_claro;
+  font-weight: 500;
+  width: 50%;
+  display: block;
+  margin: 30px auto 0px auto; 
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 25px;
+  text-align: center;
+}
+
+// Título principal
+h2 {
+  font-size: 64px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}

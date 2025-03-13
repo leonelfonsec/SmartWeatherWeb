@@ -1,19 +1,23 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card text-white bg-dark p-4" style="max-width: 400px;">
-      <div class="text-center">
-        <h2>SmartWeather</h2>
-        <img src="assets/weather-icon.png" alt="Weather Icon" class="img-fluid my-3" width="100">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Usuario</label>
-        <input type="text" class="form-control">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Contraseña</label>
-        <input type="password" class="form-control">
-      </div>
-      <button class="btn btn-light w-100">Iniciar sesión</button>
-      <hr class="text-light">
-      <button class="btn btn-outline-light w-100">Registrarse</button>
+<div class="full-screen d-flex justify-content-center align-items-center">
+  <div class="card text-white p-4">
+    <div class="text-center">
+      <h2>SmartWeather</h2>
+      <img src="/assets/logo.png" alt="Weather Icon" class="img-fluid my-3" width="300">
     </div>
-  </div>  
+    <div class="mb-3">
+      <input type="text" class="form-control" placeholder="Usuario">
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" placeholder="Contraseña">
+    </div>
+
+    <button class="btn btn-light w-100 mb-4">Iniciar sesión</button>
+
+    <!-- Espaciado para mejorar la separación -->
+    <div class="text-center mb-4">
+      <button class="btn forgot-password">¿Olvidaste tu contraseña?</button>
+    </div>
+
+    <button class="btn btn-outline-light btn-register">Registrarse</button>
+  </div>
+</div>
