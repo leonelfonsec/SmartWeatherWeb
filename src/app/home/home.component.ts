@@ -1,32 +1,32 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  standalone: true, // Si estás usando Angular standalone components
-  imports: [CommonModule], // Asegúrate de importar CommonModule aquí
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
-  menuOpen = false;
+configuracion() {
+  this.router.navigate(['/configuracion']);
+}
+activarSesion() {
+  this.router.navigate(['/sesiones']);
+}
+constructor(private router: Router) {}
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+confirmLogout() {
+    const confirmed = confirm('¿Estás seguro de que deseas cerrar sesión?');
+    if (confirmed) {
+      this.router.navigate(['/iniciar-sesion']);
+    }
   }
 
-  forecast = [
-    { name: 'Lunes', min: 11, max: 20, avg: 15 },
-    { name: 'Martes', min: 12, max: 20, avg: 16 },
-    { name: 'Miércoles', min: 11, max: 19, avg: 15 },
-    { name: 'Jueves', min: 11, max: 19, avg: 15 },
-    { name: 'Viernes', min: 11, max: 20, avg: 16 }
-  ];
-
-  alarmasactivas() {
-    console.log("Navegando a Home..."); // 🔍 Verifica en la consola si se ejecuta esta línea
-    this.router.navigate(['/alarmas-activas']);
+  toggleMenu() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar?.classList.toggle('active');
+    overlay?.classList.toggle('active');
   }
 }
