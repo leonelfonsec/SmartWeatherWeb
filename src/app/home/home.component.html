@@ -1,55 +1,49 @@
 <div class="home-container">
-    <!-- Header -->
-    <header class="home-header">
+  <!-- Header -->
+  <header class="home-header">
+    <div class="header-left">
+      <img src="/assets/logo.png" alt="Logo" class="logo">
       <h2>SmartWeather</h2>
-      <span class="location">Bogotá, Colombia 📍</span>
-    </header>
-  
-    <!-- Sección de Clima Actual -->
-    <section class="weather-info">
-      <h1>20°C</h1>
-      <p>Nublado</p>
-      <p>Máx.: 20° Mín.: 11°</p>
-      <p>Formación de tormentas eléctricas por la tarde. Vientos del O de 10 a 15 km/h. 40% prob. de lluvia.</p>
-    </section>
-  
-    <!-- Pronóstico Semanal -->
-    <section class="weekly-forecast">
-      <div class="day">
-        <span>Lunes</span>
-        <span>11°</span>
-        <input type="range" min="11" max="20" value="15">
-        <span>20°</span>
-      </div>
-      <div class="day">
-        <span>Martes</span>
-        <span>12°</span>
-        <input type="range" min="12" max="20" value="16">
-        <span>20°</span>
-      </div>
-      <div class="day">
-        <span>Miércoles</span>
-        <span>11°</span>
-        <input type="range" min="11" max="19" value="15">
-        <span>19°</span>
-      </div>
-      <div class="day">
-        <span>Jueves</span>
-        <span>11°</span>
-        <input type="range" min="11" max="19" value="15">
-        <span>19°</span>
-      </div>
-      <div class="day">
-        <span>Viernes</span>
-        <span>11°</span>
-        <input type="range" min="11" max="20" value="16">
-        <span>20°</span>
-      </div>
-    </section>
-  
-    <!-- Mapa -->
-    <section class="weather-map">
-      <img src="/assets/mapa.png" alt="Mapa del clima">
-    </section>
-  </div>
-  
+    </div>
+    <button class="menu-button" (click)="toggleMenu()">☰</button>
+  </header>
+
+  <!-- Barra de navegación (oculta por defecto) -->
+  <nav class="side-menu" [class.open]="menuOpen">
+    <ul>
+      <li><a href="#">Alarmas</a></li>
+      <li><a href="#">Cargar alarmas</a></li>
+      <li><a href="#">Alarmas activas</a></li>
+      <li><a href="#">Histórico de alarmas</a></li>
+      <li><a href="#">Histórico de clima</a></li>
+      <li><a href="#">Configuración</a></li>
+      <li><a href="#">Dispositivos</a></li>
+      <li><a href="#">Cerrar Sesión</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- Sección de Clima Actual -->
+  <section class="weather-info">
+    <p>Bogotá, Colombia</p>
+    <h1>20°C</h1>
+    <p>Nublado</p>
+    <p>Máx.: 20° Mín.: 11°</p>
+    <p>Formación de tormentas eléctricas por la tarde. Vientos del O de 10 a 15 km/h. 40% prob. de lluvia.</p>
+  </section>
+
+  <!-- Pronóstico Semanal -->
+  <section class="weekly-forecast">
+    <div class="day" *ngFor="let day of forecast">
+      <span>{{ day.name }}</span>
+      <span>{{ day.min }}°</span>
+      <input type="range" [min]="day.min" [max]="day.max" [value]="day.avg">
+      <span>{{ day.max }}°</span>
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <section class="weather-map">
+    <img src="/assets/mapa.png" alt="Mapa del clima">
+  </section>
+</div>
