@@ -1,0 +1,60 @@
+<div class="alarmas-container">
+    <!-- Header -->
+    <header class="home-header">
+      <div class="header-left">
+        <img src="/assets/logo.png" alt="Logo" class="logo">
+        <h2>SmartWeather</h2>
+      </div>
+      <button class="menu-button" (click)="toggleMenu()">☰</button>
+    </header>
+  
+    <!-- Barra de navegación (oculta por defecto) -->
+    <nav class="side-menu" [class.open]="menuOpen">
+      <ul>
+        <li><a href="#">Alarmas</a></li>
+        <li><a href="#">Cargar alarmas</a></li>
+        <li><a (click)="goToHome()">Volver a Inicio</a></li>
+        <li><a href="#">Histórico de alarmas</a></li>
+        <li><a href="#">Histórico de clima</a></li>
+        <li><a href="#">Configuración</a></li>
+        <li><a href="#">Dispositivos</a></li>
+        <li><a href="#">Cerrar Sesión</a></li>
+      </ul>
+    </nav>
+  
+    <!-- Sección de Alarmas Activas -->
+    <section class="alarmas-activas">
+      <h2>Alarmas Activas</h2>
+      <table class="alarmas-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Hora</th>
+            <th>Frecuencia</th>
+            <th>Estado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alarma of alarmas">
+            <td>{{ alarma.nombre }}</td>
+            <td>{{ alarma.hora }}</td>
+            <td>
+              <div class="frecuencia">
+                <span *ngFor="let dia of alarma.frecuencia">{{ dia }}</span>
+              </div>
+            </td>
+            <td>
+              <button class="toggle-button" [class.active]="alarma.estado" (click)="toggleAlarma(alarma)">
+                {{ alarma.estado ? "✔️" : "❌" }}
+              </button>
+            </td>
+            <td>
+              <button class="delete-button" (click)="eliminarAlarma(alarma)">🗑</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  

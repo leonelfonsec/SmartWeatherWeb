@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  constructor(private router: Router) {}
   menuOpen = false;
 
   toggleMenu() {
@@ -22,4 +24,9 @@ export class HomeComponent {
     { name: 'Jueves', min: 11, max: 19, avg: 15 },
     { name: 'Viernes', min: 11, max: 20, avg: 16 }
   ];
+
+  alarmasactivas() {
+    console.log("Navegando a Home..."); // 🔍 Verifica en la consola si se ejecuta esta línea
+    this.router.navigate(['/alarmas-activas']);
+  }
 }

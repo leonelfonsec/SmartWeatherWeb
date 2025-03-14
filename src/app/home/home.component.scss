@@ -65,7 +65,9 @@ html, body {
   
 }
 
-
+.side-menu ul li a {
+  cursor: pointer;  // Hace que aparezca la mano al pasar el mouse
+}
 
 // Información del clima
 .weather-info {
