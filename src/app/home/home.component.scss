@@ -1,128 +1,282 @@
 @use "../colors" as c;
 
-h2 {
-  cursor: pointer;
-}
-// Fondo principal
-.home-container {
-  background-color: c.$color3_oscuro;
-  color: white;
-  width: 100vw;
-  height: 100vh;
-  padding: 2rem;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; // Asegura que todo el viewport esté cubierto
+  width: 100%;
+  background-color: c.$color3_oscuro; // Ajusta al color del diseño en Figma
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-// Encabezado
+.home-container {
+  min-height: 100%;
+  display: grid;
+  background-color: c.$color3_oscuro;
+  justify-content: space-between;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-areas:
+    "header header"
+    "info map"
+    "forecast map";
+  gap: 20px;
+  
+}
+
+// Header
 .home-header {
+  grid-area: header;
   display: flex;
   justify-content: space-between;
-  width: 90%;
-  max-width: 800px;
-  font-size: 20px;
-  font-weight: bold;
-}
+  align-items: center;
+  padding: 0px 15px;
+  height: 80px;
 
-// Sección de Clima
-.weather-info {
-  text-align: left;
-  max-width: 800px;
-  h1 {
-    font-size: 50px;
-    font-weight: bold;
+  .header-left {
+    display: flex;
+    align-items: center;
   }
+
+  .logo {
+    width: 60px;
+    margin-right: 5px;
+  }
+
+  h2 {
+    font-size: 42px;
+    font-weight: 550;
+    color: white;
+  }
+
+  .menu-button {
+    position: absolute; // Para que no se vea tapado
+    top: 20px;
+    right: 20px;
+    z-index: 1100; // Más alto que el menú para que esté por encima
+    background: none;
+    border: none;
+    font-size: 54px;
+    color: c.$color5;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
 }
 
-// Pronóstico Semanal
+.side-menu ul li a {
+  cursor: pointer;  // Hace que aparezca la mano al pasar el mouse
+}
+
+// Información del clima
+.weather-info {
+  grid-area: info;
+  margin-left: 80px;
+}
+
+// Pronóstico semanal
 .weekly-forecast {
-  background-color: c.$color1;
-  padding: 1rem;
+  grid-area: forecast;
+  background: c.$color1;
+  padding: 10px;
   border-radius: 10px;
-  max-width: 800px;
-  width: 90%;
+  margin-bottom: 60px;
+  margin-left: 80px;
+  color: c.$color5_claro;
+  font-size: 22px;
+  font-weight: 450;
   .day {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
-    span {
-      font-size: 18px;
+    margin-bottom: 20px;
+
+    span:first-child {
+      min-width: 100px;
+      text-align: left;
+      margin-right: 80px;
+      margin-left: 20px;
+       // Da más espacio entre el nombre y la temperatura
     }
+
     input[type="range"] {
-      flex-grow: 1;
-      margin: 0 10px;
+      flex: 1;
+      margin: 0 30px;
     }
   }
 }
 
-.menu-toggle {
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: white;
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #2A3A4B;
-  padding: 15px;
-  position: fixed;
-  right: -250px;
-  top: 0;
-  height: 100%;
-  transition: right 0.3s;
-  z-index: 1000;
-}
-
-.sidebar.active {
-  right: 0;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  margin-bottom: 10px;
-  cursor: pointer;
-}
-
-.sidebar ul li ul {
-  list-style-type: none;
-  padding-left: 20px;
-}
-
-// Fondo semitransparente
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
-  z-index: 999;
-}
-
-.overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-
-// Mapa del Clima
+// Mapa
 .weather-map {
-  width: 90%;
-  max-width: 800px;
-  img {
-    width: 100%;
-    border-radius: 10px;
+  grid-area: map;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px; // Evita que el mapa se expanda demasiado en pantallas grandes
+  width: 100%;
+  margin: 0 auto; // Centra en todas las pantallas
+}
+
+.weather-map img {
+  width: 100%;
+  height: auto;
+  max-width: 500px; // Asegura que no se haga más grande de lo necesario
+  border-radius: 20px;
+  object-fit: cover; // Mantiene proporciones sin deformaciones
+}
+
+// Barra de navegación lateral
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background: rgba(19, 28, 51, 0.9);
+  transition: right 0.3s ease;
+  padding: 20px;
+  color: c.$color4_claro;
+
+  &.open {
+    right: 0;
   }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 54px;
+    color: c.$color5;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin: 10px 0;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+
+  
+}
+
+.weather-info h1 {
+  font-size: 64px; // Tamaño de fuente grande
+  font-weight: 550;
+  margin: 10px 0;
+  color: c.$color4_claro;
+}
+
+.weather-info p:first-child {
+  font-size: 32px; // Tamaño de fuente grande
+  font-weight: 400;
+  margin-bottom: 5px; // Espaciado debajo del texto
+  color: c.$color5;
+}
+
+.weather-info p:nth-of-type(2) {
+  font-size: 26px; // Tamaño de "Nublado"
+  font-weight: 200;
+  color: c.$color5;
+}
+
+.weather-info p:nth-of-type(3) {
+  font-size: 26px;  // Tamaño del texto "Máx.: 20° Mín.: 11°"
+  font-weight: 200;
+  color: c.$color5;
+}
+
+.weather-info p:nth-of-type(4) {
+  font-size: 26px;  // Tamaño del texto "Máx.: 20° Mín.: 11°"
+  font-weight: 200;
+  color: c.$color5;
+}
+
+@media (max-width: 1024px) {
+  .home-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "info"
+      "forecast"
+      "map";
+    text-align: center;
+  }
+
+  .weather-map {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+input[type="range"] {
+  -webkit-appearance: none; /* Para navegadores basados en WebKit */
+  appearance: none;
+  width: 100%;
+  height: 15px;
+  background: c.$color3; /* Cambia este color al que desees */
+  border-radius: 15px;
+  outline: none;
+  opacity: 0.9;
+  transition: 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  /* Estilo del thumb (la parte deslizante del slider) */
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: c.$color4; /* Cambia este color al que desees */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #FFD700; /* Cambia este color al que desees */
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; // Oculto por defecto
+  width: 250px;
+  height: 100%;
+  background: rgba(19, 28, 51, 0.95);
+  transition: right 0.3s ease;
+  padding: 20px;
+  color: c.$color4_claro;
+  z-index: 1000; // Menor que el botón para que no lo cubra
+
+  &.open {
+    right: 0; // Se despliega al abrirse
+  }
+}
+
+
+.side-menu ul li a {
+  display: block;
+  padding: 0px 5px;
+  text-decoration: none;
+  color: c.$color4_claro;  // 🌟 Cambia este color al que quieras (dorado en este caso)
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 5px;
+
 }
