@@ -1,0 +1,142 @@
+@use "../colors" as c;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; // Asegura que todo el viewport esté cubierto
+  width: 100%;
+  background-color: c.$color3_oscuro; // Ajusta al color del diseño en Figma
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.header-left {
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 10px; /* Espacio entre el logo y el texto */
+}
+
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  height: 80px;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 54px;
+  color: c.$color5;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Oculta el menú fuera de la pantalla */
+  width: 250px;
+  height: 100%;
+  background-color: #1a1a2e;
+  transition: right 0.3s ease-in-out;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.side-menu.open {
+  right: 0; /* Muestra el menú cuando la clase "open" está activa */
+}
+
+
+
+.alarmas-container {
+  min-height: 100%;
+  display: grid;
+  justify-content: flex-start;
+  background-color: c.$color3_oscuro;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "table";
+  gap: 0px; 
+}
+
+
+
+
+.alarmas-activas {
+  grid-area: table;
+  background: c.$color1;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  color: c.$color5_claro;
+  margin-top: 0px !important;
+
+  h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .alarmas-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid c.$color5;
+    padding: 10px;
+    text-align: center;
+  }
+
+  th {
+    background: c.$color1_oscuro;
+    color: white;
+  }
+
+  .toggle-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .delete-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: red;
+  }
+
+  .frecuencia {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .frecuencia span {
+    background: c.$color4;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+}
+
+.logo {
+  width: 60px !important; /* Ajusta según sea necesario */
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+
+
