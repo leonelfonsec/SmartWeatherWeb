@@ -108,23 +108,8 @@ html, body {
 }
 
 // Mapa
-.weather-map {
-  grid-area: map;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 500px; // Evita que el mapa se expanda demasiado en pantallas grandes
-  width: 100%;
-  margin: 0 auto; // Centra en todas las pantallas
-}
 
-.weather-map img {
-  width: 100%;
-  height: auto;
-  max-width: 500px; // Asegura que no se haga más grande de lo necesario
-  border-radius: 20px;
-  object-fit: cover; // Mantiene proporciones sin deformaciones
-}
+
 
 // Barra de navegación lateral
 .side-menu {
@@ -216,6 +201,44 @@ html, body {
     margin-right: auto;
   }
 }
+
+.weather-map {
+  grid-area: map;
+  display: flex;
+  justify-content: center;
+  align-items:end;
+  max-width: 75%; // Evita que el mapa se expanda demasiado en pantallas grandes
+  width: 100%;
+  margin: 0 auto; // Centra en todas las pantallas
+  margin-bottom: 60px;
+}
+
+.weather-map img {
+  width: 90%;  // Reduce el ancho en todas las pantallas
+  height: auto;  // Mantiene la proporción de la imagen
+  border-radius: 20px;
+  object-fit: cover;  // Evita distorsión de la imagen
+}
+
+
+@media (max-width: 1024px) {
+  .weather-map img {
+    max-width: 350px;  // Tamaño más pequeño en tablets
+  }
+}
+
+@media (max-width: 768px) {
+  .weather-map img {
+    max-width: 280px;  // Tamaño aún más pequeño en móviles
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-map img {
+    max-width: 200px;  // Muy pequeño para pantallas muy reducidas
+  }
+}
+
 
 input[type="range"] {
   -webkit-appearance: none; /* Para navegadores basados en WebKit */
