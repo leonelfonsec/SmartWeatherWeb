@@ -3,40 +3,65 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%; // Asegura que todo el viewport esté cubierto
+  height: 100vh; // Asegura que el fondo cubra toda la pantalla
   width: 100%;
-  background-color: c.$color3_oscuro; // Ajusta al color del diseño en Figma
+  background-color: c.$color3_oscuro; // Usa el color oscuro correcto
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; // Asegura que los elementos se coloquen en columna
 }
 
 
+
+
+
+.home-header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+  padding: 0px 20px;
+  height: 80px;
+  background-color: c.$color3_oscuro;
+  width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+/* Asegurar que el logo y el texto estén alineados a la izquierda */
 .header-left {
   display: flex;
   align-items: center;
-  color: white;
+  justify-content: flex-start; /* Esto los alinea a la izquierda */
+  flex-grow: 1; /* Permite que ocupe todo el espacio disponible antes del botón */
   gap: 10px; /* Espacio entre el logo y el texto */
 }
 
-.home-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
-  height: 80px;
+.header-left h2 {
+  margin: 0; /* Evita márgenes extra */
+  text-align: left;
+  white-space: nowrap; /* Evita saltos de línea inesperados */
+  color: white;
+  font-size: 42px;
 }
 
+/* Ajustar el logo */
+.logo {
+  width: 60px;
+  height: auto;
+  display: block;
+}
+
+/* Mantener el botón de menú a la derecha */
 .menu-button {
   background: none;
   border: none;
   cursor: pointer;
-  position: absolute;
-  right: 20px;
-  top: 20px;
+  position: relative; /* Ya no absoluto, para que se alinee correctamente */
   font-size: 54px;
-  color: c.$color5;
+  color: white;
+  transition: transform 0.3s ease;
 }
+
+
+
 
 .side-menu {
   position: fixed;
@@ -57,34 +82,34 @@ html, body {
 
 
 .alarmas-container {
-  min-height: 100%;
-  display: grid;
-  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Mantiene los elementos arriba */
+  min-height: 100vh; /* Hace que cubra toda la pantalla */
+  width: 100%;
   background-color: c.$color3_oscuro;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "header"
-    "table";
-  gap: 0px; 
 }
 
-
+h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 40px;
+  color: c.$color5_claro; /* Cambia esto al color que desees */
+  font-weight: 500; /* Opcional: Hace que el texto sea más grueso */
+  background-color: c.$color3_oscuro;
+}
 
 
 .alarmas-activas {
   grid-area: table;
-  background: c.$color1;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px;
-  color: c.$color5_claro;
-  margin-top: 0px !important;
+  background: c.$color5;
+  border-radius: 20px;
+  color: c.$color3;
+  width: 90%;
+  margin-top: 30px;
 
-  h2 {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
+  
 
   .alarmas-table {
     width: 100%;
@@ -92,14 +117,18 @@ html, body {
   }
 
   th, td {
-    border: 1px solid c.$color5;
+    border: 1px solid c.$color3_oscuro;
     padding: 10px;
     text-align: center;
+    color: c.$color3_oscuro;
+    font-size: 36px;
+    font-weight: 400;
   }
 
   th {
-    background: c.$color1_oscuro;
-    color: white;
+    background: c.$color2;
+    color: c.$color5_claro;
+    font-weight: 500;
   }
 
   .toggle-button {
@@ -116,20 +145,29 @@ html, body {
     cursor: pointer;
     color: red;
   }
-
-  .frecuencia {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-  }
-
-  .frecuencia span {
-    background: c.$color4;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  
 }
+
+
+
+.frecuencia {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background: c.$color4; /* Fondo para toda la caja */
+  padding: 8px 0px; /* Espaciado interno */
+  border-radius: 12px; /* Borde redondeado */
+  border: 2px solid c.$color1_oscuro;
+}
+
+.frecuencia span {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+  
+  
+
 
 .logo {
   width: 60px !important; /* Ajusta según sea necesario */
@@ -137,6 +175,3 @@ html, body {
   max-width: 100%;
   display: block;
 }
-
-
-

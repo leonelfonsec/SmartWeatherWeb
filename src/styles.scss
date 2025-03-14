@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use '@angular/material' as mat;
+@use "./app/colors" as c;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    @include mat.slide-toggle-overrides((
+      selected-track-color: c.$color2_claro, /* Color del fondo cuando está activado */
+      selected-handle-color: white, /* Color del botón cuando está activado */
+      unselected-track-color: c.$color3_claro, /* Color del fondo cuando está apagado */
+      unselected-handle-color: c.$color3, /* Color del botón cuando está apagado */
+      selected-icon-color: c.$color2, /* Color del ícono de check */
+      unselected-icon-color: c.$color3_oscuro, /* Color del ícono cuando está apagado */
+    ));
+  }

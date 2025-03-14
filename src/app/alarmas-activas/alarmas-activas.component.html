@@ -7,24 +7,10 @@
       </div>
       <button class="menu-button" (click)="toggleMenu()">☰</button>
     </header>
-  
-    <!-- Barra de navegación (oculta por defecto) -->
-    <nav class="side-menu" [class.open]="menuOpen">
-      <ul>
-        <li><a href="#">Alarmas</a></li>
-        <li><a href="#">Cargar alarmas</a></li>
-        <li><a (click)="goToHome()">Volver a Inicio</a></li>
-        <li><a href="#">Histórico de alarmas</a></li>
-        <li><a href="#">Histórico de clima</a></li>
-        <li><a href="#">Configuración</a></li>
-        <li><a href="#">Dispositivos</a></li>
-        <li><a href="#">Cerrar Sesión</a></li>
-      </ul>
-    </nav>
-  
+    <h2>Alarmas Activas</h2>
     <!-- Sección de Alarmas Activas -->
     <section class="alarmas-activas">
-      <h2>Alarmas Activas</h2>
+      
       <table class="alarmas-table">
         <thead>
           <tr>
@@ -39,18 +25,19 @@
           <tr *ngFor="let alarma of alarmas">
             <td>{{ alarma.nombre }}</td>
             <td>{{ alarma.hora }}</td>
-            <td>
+            <td class="cajitafrecuencia">
               <div class="frecuencia">
                 <span *ngFor="let dia of alarma.frecuencia">{{ dia }}</span>
               </div>
             </td>
             <td>
-              <button class="toggle-button" [class.active]="alarma.estado" (click)="toggleAlarma(alarma)">
-                {{ alarma.estado ? "✔️" : "❌" }}
-              </button>
+              <mat-slide-toggle
+                [(ngModel)]="alarma.estado"
+                (change)="toggleAlarma(alarma)">
+              </mat-slide-toggle>
             </td>
             <td>
-              <button class="delete-button" (click)="eliminarAlarma(alarma)">🗑</button>
+              <button class="delete-button" (click)="eliminarAlarma(alarma)"><img src="/assets/delete.png" alt="Logo" class="logo"></button>
             </td>
           </tr>
         </tbody>

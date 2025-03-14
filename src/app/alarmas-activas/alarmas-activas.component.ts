@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms'; // Importar FormsModule
+
 
 @Component({
   selector: 'app-alarmas-activas',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,MatSlideToggleModule,FormsModule],
   templateUrl: './alarmas-activas.component.html',
   styleUrl: './alarmas-activas.component.scss'
 })
@@ -28,9 +31,11 @@ export class AlarmasActivasComponent {
     this.router.navigate(['/home']);
   }
 
-  toggleAlarma(alarma: any) {
-    alarma.estado = !alarma.estado;
+  toggleAlarma(alarma: any): void {
+    alarma.estado = !alarma.estado; // Invierte el estado
+    console.log(`Alarma ${alarma.nombre} ahora está ${alarma.estado ? 'activa' : 'inactiva'}`);
   }
+  
 
   eliminarAlarma(alarma: any) {
     this.alarmas = this.alarmas.filter(a => a !== alarma);
