@@ -1,0 +1,72 @@
+<div class="home-container">
+  <!-- Header -->
+  <header class="home-header">
+    <h2 (click)="home()">SmartWeather</h2>
+    <span class="location">Bogotá, Colombia 📍</span>
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  </header>
+
+ <!-- Tabla de Sesiones Activas -->
+ <section class="sessions-table">
+  <h1>Sesiones activas</h1>
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>Dispositivos</th>
+        <th>Último Inicio de Sesión</th>
+        <th>Ubicación</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Laptop</td>
+        <td>2025-03-13 10:00</td>
+        <td>Bogotá, Colombia</td>
+        <td><button (click)="eliminarSesion('Laptop')">🗑️</button></td>
+      </tr>
+      <tr>
+        <td>Smartphone</td>
+        <td>2025-03-13 09:30</td>
+        <td>Medellín, Colombia</td>
+        <td><button (click)="eliminarSesion('Smartphone')">🗑️</button></td>
+      </tr>
+      <tr>
+        <td>Tablet</td>
+        <td>2025-03-13 08:45</td>
+        <td>Cali, Colombia</td>
+        <td><button (click)="eliminarSesion('Tablet')">🗑️</button></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+  <div class="overlay" id="overlay" (click)="toggleMenu()"></div>
+
+      <!-- Menú Lateral -->
+      <nav class="sidebar" id="sidebar">
+        <ul>
+            <li>
+                <span>Alarmas</span>
+                <ul>
+                    <li>Cargar Alarmas</li>
+                    <li>Alarmas activas</li>
+                </ul>
+            </li>
+            <li>
+                <span>Reportes</span>
+                <ul>
+                    <li>Historico de alarmas</li>
+                    <li>Historico de clima</li>
+                </ul>
+            </li>
+            <li (click)="configuracion()">
+                Configuracion
+            </li>
+            <li (click)="activarSesion()">Dispositivos</li>
+          <li  (click)="confirmLogout()">Cerrar sesión</li>
+        </ul>
+    </nav>
+
+</div>

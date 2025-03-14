@@ -3,8 +3,9 @@
     <header class="home-header">
       <h2>SmartWeather</h2>
       <span class="location">Bogotá, Colombia 📍</span>
+      <button class="menu-toggle" (click)="toggleMenu()">☰</button>
     </header>
-  
+
     <!-- Sección de Clima Actual -->
     <section class="weather-info">
       <h1>20°C</h1>
@@ -12,7 +13,7 @@
       <p>Máx.: 20° Mín.: 11°</p>
       <p>Formación de tormentas eléctricas por la tarde. Vientos del O de 10 a 15 km/h. 40% prob. de lluvia.</p>
     </section>
-  
+
     <!-- Pronóstico Semanal -->
     <section class="weekly-forecast">
       <div class="day">
@@ -46,10 +47,37 @@
         <span>20°</span>
       </div>
     </section>
-  
+
     <!-- Mapa -->
     <section class="weather-map">
       <img src="/assets/mapa.png" alt="Mapa del clima">
     </section>
+
+    <div class="overlay" id="overlay" (click)="toggleMenu()"></div>
+
+        <!-- Menú Lateral -->
+        <nav class="sidebar" id="sidebar">
+          <ul>
+              <li>
+                  <span>Alarmas</span>
+                  <ul>
+                      <li>Cargar Alarmas</li>
+                      <li>Alarmas activas</li>
+                  </ul>
+              </li>
+              <li>
+                  <span>Reportes</span>
+                  <ul>
+                      <li>Historico de alarmas</li>
+                      <li>Historico de clima</li>
+                  </ul>
+              </li>
+              <li (click)="configuracion()">
+                  Configuracion
+              </li>
+              <li (click)="activarSesion()">Dispositivos</li>
+            <li  (click)="confirmLogout()">Cerrar sesión</li>
+          </ul>
+      </nav>
+
   </div>
-  

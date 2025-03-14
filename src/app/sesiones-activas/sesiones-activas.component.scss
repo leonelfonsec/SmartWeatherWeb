@@ -3,6 +3,7 @@
 h2 {
   cursor: pointer;
 }
+
 // Fondo principal
 .home-container {
   background-color: c.$color3_oscuro;
@@ -116,13 +117,43 @@ h2 {
   visibility: visible;
 }
 
-
-// Mapa del Clima
-.weather-map {
+.sessions-table {
   width: 90%;
   max-width: 800px;
-  img {
+  margin: auto;
+  text-align: center;
+
+  .custom-table {
     width: 100%;
-    border-radius: 10px;
+    border-collapse: collapse;
+
+    th {
+      background-color: #19274E;
+      color: white;
+      padding: 10px;
+    }
+
+    tr:nth-child(1) {
+      background-color: #EAC195;
+    }
+
+    tr:nth-child(2) {
+      background-color: #F6E4D0;
+    }
+
+    tr:nth-child(3) {
+      background-color: #EAC195;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
   }
 }
