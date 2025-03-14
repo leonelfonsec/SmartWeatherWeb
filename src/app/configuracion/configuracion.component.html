@@ -1,46 +1,90 @@
 <div class="home-container">
   <!-- Header -->
   <header class="home-header">
-    <h2 (click)="home()">SmartWeather</h2>
-    <span class="location">Bogotá, Colombia 📍</span>
-    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+    <div class="header-left">
+      <img src="/assets/logo.png" alt="Logo" class="logo">
+      <h2 (click)="home()">SmartWeather</h2>
+    </div>
+    <button class="menu-button" (click)="toggleMenu()">☰</button>
   </header>
 
- <!-- Tabla de Sesiones Activas -->
- <section class="sessions-table">
-  <h1>Configuracion</h1>
-  <!-- <table class="custom-table">
-    <thead>
-      <tr>
-        <th>Dispositivos</th>
-        <th>Último Inicio de Sesión</th>
-        <th>Ubicación</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Laptop</td>
-        <td>2025-03-13 10:00</td>
-        <td>Bogotá, Colombia</td>
-      </tr>
-      <tr>
-        <td>Smartphone</td>
-        <td>2025-03-13 09:30</td>
-        <td>Medellín, Colombia</td>
-      </tr>
-      <tr>
-        <td>Tablet</td>
-        <td>2025-03-13 08:45</td>
-        <td>Cali, Colombia</td>
-      </tr>
-    </tbody>
-  </table> -->
-</section>
+    <!-- Contenedores en dos columnas -->
+    <div class="content">
+      <div class="column">
+        <div class="container">
+          <h3>Configurar zona horaria</h3>
+          <label for="timezone">Zona Horaria:</label>
+        <select class="form-control" id="timezone" name="timezone">
+          <option value="UTC-12:00">UTC-12:00</option>
+          <option value="UTC-11:00">UTC-11:00</option>
+          <option value="UTC-10:00">UTC-10:00</option>
+          <option value="UTC-09:00">UTC-09:00</option>
+          <option value="UTC-08:00">UTC-08:00</option>
+          <option value="UTC-07:00">UTC-07:00</option>
+          <option value="UTC-06:00">UTC-06:00</option>
+          <option value="UTC-05:00">UTC-05:00</option>
+          <option value="UTC-04:00">UTC-04:00</option>
+          <option value="UTC-03:00">UTC-03:00</option>
+          <option value="UTC-02:00">UTC-02:00</option>
+          <option value="UTC-01:00">UTC-01:00</option>
+          <option value="UTC+00:00">UTC+00:00</option>
+          <option value="UTC+01:00">UTC+01:00</option>
+          <option value="UTC+02:00">UTC+02:00</option>
+          <option value="UTC+03:00">UTC+03:00</option>
+          <option value="UTC+04:00">UTC+04:00</option>
+          <option value="UTC+05:00">UTC+05:00</option>
+          <option value="UTC+06:00">UTC+06:00</option>
+          <option value="UTC+07:00">UTC+07:00</option>
+          <option value="UTC+08:00">UTC+08:00</option>
+          <option value="UTC+09:00">UTC+09:00</option>
+          <option value="UTC+10:00">UTC+10:00</option>
+          <option value="UTC+11:00">UTC+11:00</option>
+          <option value="UTC+12:00">UTC+12:00</option>
+        </select>
+        <br/>
+        <label for="fecha">Fecha: 14/01/2025</label>
+        <br>
+        <label for="hora">Hora: 20:00</label>
+        </div>
+      </div>
+      <div class="column">
+        <div class="container">
+          <h3>Habilitar configuracion
+            <input type="checkbox" id="habilitar-configuracion" (change)="toggleConfiguracion($event)">
+          </h3>
+          <div id="configuracion-content">
+          <label for="frecuencia">Frecuencia:</label>
 
-<button class="btn btn-outline-light btn-register">Registrarse</button>
+          <select class="form-control" id="frecuencia" name="frecuencia">
+            <option value="diaria">Diaria</option>
+            <option value="semanal">Semanal</option>
+            <option value="mensual">Mensual</option>
+          </select>
+          <label for="hora-alarma">Hora:</label>
+          <input class="form-control" type="time" id="hora-alarma" name="hora-alarma">
 
-  <div class="overlay" id="overlay"></div>
+          <label for="estilo-alarma">Estilo de Alarma:</label>
+          <select class="form-control" id="estilo-alarma" name="estilo-alarma">
+            <option value="sonido">Sonido</option>
+            <option value="vibracion">Vibración</option>
+            <option value="ambos">Ambos</option>
+          </select>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <button class="save-button" (click)="guardarConfiguracion()">Guardar</button>
+
+      <!-- Mensaje de confirmación -->
+  <div *ngIf="mensajeGuardado" class="mensaje-guardado">
+    Configuración guardada
+  </div>
+
+
+  <div class="overlay" id="overlay" (click)="toggleMenu()"></div>
 
       <!-- Menú Lateral -->
       <nav class="sidebar" id="sidebar">
@@ -60,10 +104,10 @@
                 </ul>
             </li>
             <li (click)="configuracion()">
-              Configuracion
-          </li>
-          <li (click)="activarSesion()">Dispositivos</li>
-        <li  (click)="confirmLogout()">Cerrar sesión</li>
+                Configuracion
+            </li>
+            <li (click)="activarSesion()">Dispositivos</li>
+          <li  (click)="confirmLogout()">Cerrar sesión</li>
         </ul>
     </nav>
 
