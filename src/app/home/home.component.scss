@@ -65,9 +65,7 @@ html, body {
   
 }
 
-.side-menu ul li a {
-  cursor: pointer;  // Hace que aparezca la mano al pasar el mouse
-}
+
 
 // Información del clima
 .weather-info {
@@ -111,46 +109,6 @@ html, body {
 
 
 
-// Barra de navegación lateral
-.side-menu {
-  position: fixed;
-  top: 0;
-  right: -250px;
-  width: 250px;
-  height: 100%;
-  background: rgba(19, 28, 51, 0.9);
-  transition: right 0.3s ease;
-  padding: 20px;
-  color: c.$color4_claro;
-
-  &.open {
-    right: 0;
-  }
-
-  .close-btn {
-    background: none;
-    border: none;
-    font-size: 54px;
-    color: c.$color5;
-    cursor: pointer;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-
-    li {
-      margin: 10px 0;
-
-      a {
-        color: white;
-        text-decoration: none;
-      }
-    }
-  }
-
-  
-}
 
 .weather-info h1 {
   font-size: 64px; // Tamaño de fuente grande
@@ -275,6 +233,10 @@ input[type="range"] {
   }
 }
 
+.side-menu ul li a {
+  cursor: pointer;  // Hace que aparezca la mano al pasar el mouse
+}
+
 .side-menu {
   position: fixed;
   top: 0;
@@ -289,6 +251,20 @@ input[type="range"] {
 
   &.open {
     right: 0; // Se despliega al abrirse
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 80px;
+    li {
+      margin: 10px 0;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
   }
 }
 

@@ -49,16 +49,7 @@ html, body {
   display: block;
 }
 
-/* Mantener el botón de menú a la derecha */
-.menu-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: relative; /* Ya no absoluto, para que se alinee correctamente */
-  font-size: 54px;
-  color: white;
-  transition: transform 0.3s ease;
-}
+
 
 
 
@@ -79,7 +70,9 @@ html, body {
   right: 0; /* Muestra el menú cuando la clase "open" está activa */
 }
 
-
+.side-menu ul li a {
+  cursor: pointer;  // Hace que aparezca la mano al pasar el mouse
+}
 
 .alarmas-container {
   display: flex;
@@ -174,4 +167,61 @@ h2 {
   height: auto;
   max-width: 100%;
   display: block;
+}
+
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; // Oculto por defecto
+  width: 250px;
+  height: 100%;
+  background: rgba(19, 28, 51, 0.95);
+  transition: right 0.3s ease;
+  padding: 20px;
+  color: c.$color4_claro;
+  z-index: 1000; // Menor que el botón para que no lo cubra
+
+  &.open {
+    right: 0; // Se despliega al abrirse
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 80px;
+    li {
+      margin: 10px 0;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+.side-menu ul li a {
+  display: block;
+  padding: 0px 5px;
+  text-decoration: none;
+  color: c.$color4_claro;  // 🌟 Cambia este color al que quieras (dorado en este caso)
+  font-size: 25px;
+  font-weight: 500;
+  border-radius: 5px;
+
+}
+
+.menu-button {
+  position: absolute; // Para que no se vea tapado
+  top: 20px;
+  right: 20px;
+  z-index: 1100; // Más alto que el menú para que esté por encima
+  background: none;
+  border: none;
+  font-size: 54px;
+  color: c.$color5;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }

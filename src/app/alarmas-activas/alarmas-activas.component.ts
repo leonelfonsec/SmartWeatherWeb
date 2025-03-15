@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms'; // Importar FormsModule
   styleUrl: './alarmas-activas.component.scss'
 })
 export class AlarmasActivasComponent {
+  constructor(private router: Router) {}
   menuOpen = false;
 
   alarmas = [
@@ -21,7 +22,6 @@ export class AlarmasActivasComponent {
     { nombre: 'Alarma trabajo', hora: '07:00 AM', frecuencia: ['S', 'M', 'T', 'W', 'T', 'F', 'S'], estado: false }
   ];
 
-  constructor(private router: Router) {}
 
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
@@ -39,6 +39,18 @@ export class AlarmasActivasComponent {
 
   eliminarAlarma(alarma: any) {
     this.alarmas = this.alarmas.filter(a => a !== alarma);
+  }
+
+  alarmasactivas() {
+    this.router.navigate(['/alarmas-activas']);
+  }
+
+  configuracion() {
+    this.router.navigate(['/configuracion']);
+  }
+
+  sesiones() {
+    this.router.navigate(['/sesiones']);
   }
 }
 

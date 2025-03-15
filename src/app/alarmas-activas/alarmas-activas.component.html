@@ -7,6 +7,16 @@
       </div>
       <button class="menu-button" (click)="toggleMenu()">☰</button>
     </header>
+
+    <!-- Barra de navegación (oculta por defecto) -->
+  <nav class="side-menu" [class.open]="menuOpen">
+    <ul>
+      <li><a (click)="alarmasactivas()">Alarmas activas</a></li>
+      <li><a (click)="configuracion()">Configuración</a></li>
+      <li><a (click)="sesiones()">Dispositivos</a></li>
+    </ul>
+  </nav>
+
     <h2>Alarmas Activas</h2>
     <!-- Sección de Alarmas Activas -->
     <section class="alarmas-activas">
