@@ -1,5 +1,22 @@
 # SmartWeatherWeb
 
+
+
+
+CLONAR EL REPOSITORIO Y EJECUTAR "ng serve" dentro del proyecto
+
+
+
+
+
+
+
+
+
+
+
+
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.2.
 
 ## Development server
