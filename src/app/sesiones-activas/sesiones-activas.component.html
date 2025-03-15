@@ -1,9 +1,11 @@
 <div class="home-container">
   <!-- Header -->
   <header class="home-header">
-    <h2 (click)="home()">SmartWeather</h2>
-    <span class="location">Bogotá, Colombia 📍</span>
-    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+    <div class="header-left">
+      <img src="/assets/logo.png" alt="Logo" class="logo">
+      <h2 (click)="home()">SmartWeather</h2>
+    </div>
+    <button class="menu-button" (click)="toggleMenu()">☰</button>
   </header>
 
  <!-- Tabla de Sesiones Activas -->
